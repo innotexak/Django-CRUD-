@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="container">
+            <h3 class="text-center">WELCOME TO CRUD APP BLOG DISPLAYED CONTENT </h3>
+        </div>
+        <div class="row">
+            {% for mypost in post %}
+            <div class="col-sm-6">
+                <div class="card mt-3" >
+                    <img class="card-img-top" src="{{mypost.image.url}}" alt="Card image cap">
+                    <p class="text-muted">{{mypost.author}} | <span>{{mypost.timstamp}}</span></p>
+                    <div class="card-body">
+                        <h5 class="card-title">{{mypost.title}}</h5>
+                        <p class="card-text">{{ mypost.body | slice:500 }}...
+                             <a href="#">Read more &Rrightarrow;</a>
+                        </p>
+                       
+                        <p>
+                            <a  type="button" href="update/{{mypost.id}}" id="{{mypost.id}}"class="btn btn-primary">Edit</a>
+                            <a  type="button" href="delete/{{mypost.id}}" id="{{mypost.id}}"class="btn btn-danger">Delete</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+
+       
+    </div>
+{% endblock content %}

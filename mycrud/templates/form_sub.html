@@ -1,0 +1,31 @@
+{% extends 'base.html' %}{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container w-50">
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <br>
+    <h2>Blog Form </h2>
+        {{ forms |crispy}}
+    <!-- <div class="form-group">
+        <label for="title">Title</label>
+        <input class="form-control" type="text" {% if forms.title %}Checked {%endif %}name="title" placeholder="Title">
+    </div>
+    <div class="form-group">
+        <label for="author">Blogger</label>
+        <input class="form-control" type="text"  {% if forms.author %}Checked {%endif %} name="author" placeholder="Blogger">
+    </div>
+       <div class="form-group">
+        <label for="author">Message</label>
+        <textarea  col="6" rows="6"class="form-control" {% if forms.body %}Checked {%endif %} name="body" placeholder="Message"></textarea>
+    </div>
+      <div class="form-group">
+        <label for="author">Post Image</label>
+        <input class="form-control" type="file"  {% if forms.image %}Checked {%endif %} name="image" placeholder="Post Image">
+    </div> -->
+
+    <button  class="btn btn-primary mt-4" type="submit">Send</button>
+    </form>
+</div>
+{% endblock content %}
