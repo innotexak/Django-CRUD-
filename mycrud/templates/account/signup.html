@@ -35,7 +35,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
 
 
-<form class="login" method="POST" action="{% url 'account_signup' %}">
+<form class="signup" method="POST" action="{% url 'account_signup' %}">
   {% csrf_token %}
     {{form|crispy}}
 

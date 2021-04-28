@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container ">
+    <br>
+            <h2 class="text-center">JSON PLACEHOLDER'S RANDOM USER'S ENDPOINT</h2>
+
+    <div class="row">
+         {% for data in detail %}
+     
+        <div class="col-sm-4">
+            <div class="card mt-5" style="width: 18rem;">
+                <div class="card-header">
+                    {{data.name}}
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{data.company}}</li>
+                    <li class="list-group-item">{{data.phone}}</li>
+                    <li class="list-group-item">{{data.city}}</li>
+                     <li class="list-group-item">{{data.email}}</li>
+                </ul>
+                </div>
+        </div>
+        {% endfor %}
+        
+    </div>
+ 
+</div>
+{% endblock %}

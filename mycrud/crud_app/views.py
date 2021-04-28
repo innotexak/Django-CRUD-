@@ -2,8 +2,39 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Post
 from .forms import BlogForm
-from django.contrib import messages 
+from django.contrib import messages
+import requests
+import json
 # Create your views here.
+
+
+def my_fetch_data(request, *args, **kwargs):
+    details = []
+    url= 'https://jsonplaceholder.typicode.com/users'
+    try:
+        response = requests.get(url)
+    except:
+        # error to be logged
+        print("Something went wrong, please try again!")
+    
+    # There seems to be no error
+    responseJson = response.json()
+    # city = responseJson[3]['address']['city']
+ 
+    for data in responseJson:
+        res = {
+            'name': data['name'],
+            'email':data['email'],
+            'city': data['address']['city'],
+            'compnay': data['company']['bs'] + " " + data['company']['catchPhrase'],
+            # 'compnay': f'${data['company']['bs']} ${data['company']['catchPhrase']}',
+            'phone':data['phone']
+        }
+        details.append(res)
+    context = {
+    'detail':details
+    }
+    return render(request, "myfetch.html", context )
 def home(request):
 
     return render(request, 'base.html')
